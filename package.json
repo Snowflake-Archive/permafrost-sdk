@@ -1,8 +1,9 @@
 {
-  "name": "permafrost-sdk",
-  "version": "0.0.0",
+  "name": "@snowflake-software/permafrost-sdk",
+  "version": "0.0.2",
   "description": "Software development kit for the Permafrost platform",
   "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "build": "tsc"
   },
@@ -11,5 +12,8 @@
   "license": "All Rights Reserved",
   "devDependencies": {
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "@types/node": "^20.11.25"
   }
 }

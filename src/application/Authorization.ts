@@ -1,6 +1,5 @@
-import Permafrost from "./index";
-
-export type Scopes = "ReadPublic" | "ReadPrivate";
+import { USER_AGENT } from "../index";
+import { Scopes } from "../types";
 
 export type UsersResponse = {
   id: string;
@@ -10,10 +9,10 @@ export type UsersResponse = {
   createdAt: string;
 };
 
-export default class ApplicationClient<S extends Scopes[]> {
+export default class Authorization {
   private endpoint: string;
   private accessToken: string;
-  private scope: S;
+  private scope: Scopes;
 
   /**
    * Creates an Application Client.
@@ -22,7 +21,7 @@ export default class ApplicationClient<S extends Scopes[]> {
    */
   constructor(
     endpoint = "https://id.snowflake.blue/api",
-    scope: S,
+    scope: Scopes,
     accessToken: string
   ) {
     this.endpoint = endpoint;
@@ -39,7 +38,7 @@ export default class ApplicationClient<S extends Scopes[]> {
       method: "POST",
       headers: {
         Authorization: this.accessToken,
-        "User-Agent": Permafrost.USER_AGENT,
+        "User-Agent": USER_AGENT,
         "Content-Type": "application/json",
       },
     });
